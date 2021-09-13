@@ -1,15 +1,28 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-  background-color: var(--sienna);
-  width: 160px;
-  height: 48px;
+  background-color: ${(props) =>
+    props.alternative ? "var(--white)" : "var(--sienna)"};
+  border: ${(props) => (props.alternative ? "1px solid var(--black)" : "none")};
+  box-sizing: "border-box";
+  color: ${(props) => (props.alternative ? "var(--black)" : "var(--white)")};
   display: inline-block;
-  text-align: center;
+  height: 48px;
   margin-left: 1.1rem;
-  color: var(--white);
+  text-align: center;
+  width: 160px;
+
+  &:hover {
+    background-color: ${(props) =>
+      props.alternative ? "var(--black)" : "var(--pink)"};
+    color: "var(--white)";
+  }
 `;
 
-export default function ProductButton() {
-  return <Button>SEE PRODUCT</Button>;
+export default function ProductButton(props) {
+  return <Button alternative={props.alternative}>SEE PRODUCT</Button>;
 }
+
+ProductButton.defaultProps = {
+  alternative: false,
+};
