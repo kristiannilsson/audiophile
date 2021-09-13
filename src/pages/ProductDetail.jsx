@@ -1,21 +1,41 @@
 import styled from "styled-components";
 import ProductButton from "../components/ProductButton";
 import Counter from "../components/Counter";
-import Overline from "../components/Overline";
+import Description from "../components/Description";
 
 const Container = styled.div`
   padding: 4%;
 `;
 
-const ProductImage = styled.img`
-  width: 100%;
-  height: auto;
+const Price = styled.p`
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1.29px;
+  margin-bottom: 2rem;
 `;
 
 const ListCount = styled.span`
   color: var(--sienna);
-  margin-right: 1rem;
+  margin-right: 1.5rem;
+  font-weight: 700;
 `;
+
+const SubHeading = styled.h2`
+  margin-top: 6rem;
+`;
+
+//Inserts a comma before the last 3 digits if the price is more than 1000.
+const priceFormatter = (price) => {
+  const priceString = price.toString();
+  const len = priceString.length;
+  if (price >= 1000) {
+    return `$ ${priceString.substring(0, len - 3)},${priceString.substring(
+      len - 3
+    )}`;
+  } else {
+    return `$${priceString}`;
+  }
+};
 
 export default function ProductDetail(props) {
   const contentList = props.data.includes.map((item) => (
@@ -26,32 +46,20 @@ export default function ProductDetail(props) {
       </p>
     </li>
   ));
-
-  //Inserts a comma before the last 3 digits if the price is more than 1000.
-  const priceFormatter = (price) => {
-    const priceString = price.toString();
-    const len = priceString.length;
-    if (price >= 1000) {
-      return `$ ${priceString.substring(0, len - 3)},${priceString.substring(
-        len - 3
-      )}`;
-    } else {
-      return `$${priceString}`;
-    }
-  };
-
   return (
     <Container>
-      <ProductImage src={props.data.image.mobile} alt={props.data.name} />
-      {props.data.new && <Overline />}
-      <h1>{props.data.name}</h1>
-      <p>{props.data.description}</p>
-      <b>{priceFormatter(props.data.price)}</b>
+      <Description
+        img={props.data.image}
+        new={props.data.new}
+        name={props.data.name}
+        description={props.data.description}
+      />
+      <Price>{priceFormatter(props.data.price)}</Price>
       <Counter />
       <ProductButton />
-      <h2>FEATURES</h2>
+      <SubHeading>FEATURES</SubHeading>
       <p>{props.data.features}</p>
-      <h2>IN THE BOX</h2>
+      <SubHeading>IN THE BOX</SubHeading>
       <ul>{contentList}</ul>
     </Container>
   );
