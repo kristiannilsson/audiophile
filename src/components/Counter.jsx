@@ -24,11 +24,22 @@ const CounterText = styled.p`
 export default function Counter() {
   const [count, setCount] = useState(0);
 
+  //Increases count by one if the user clicks the plus, decrease by one if the user clicks the minus.
+  //Can never go below zero.
+  const handleClick = (e) => {
+    const value = e.target.innerHTML === "+" ? 1 : -1;
+    if (count <= 0 && value < 0) {
+      return null;
+    } else {
+      setCount(count + value);
+    }
+  };
+
   return (
     <CounterContainer>
-      <Button onClick={() => setCount(count - 1)}>-</Button>
+      <Button onClick={handleClick}>-</Button>
       <CounterText>{count}</CounterText>
-      <Button onClick={() => setCount(count + 1)}>+</Button>
+      <Button onClick={handleClick}>+</Button>
     </CounterContainer>
   );
 }

@@ -18,7 +18,7 @@ const ListCount = styled.span`
 `;
 
 export default function ProductDetail(props) {
-  const listBuilder = props.data.includes.map((item) => (
+  const contentList = props.data.includes.map((item) => (
     <li key={item.item}>
       <p>
         <ListCount>{item.quantity}x</ListCount>
@@ -52,7 +52,7 @@ export default function ProductDetail(props) {
       <h2>FEATURES</h2>
       <p>{props.data.features}</p>
       <h2>IN THE BOX</h2>
-      <ul>{listBuilder}</ul>
+      <ul>{contentList}</ul>
     </Container>
   );
 }
