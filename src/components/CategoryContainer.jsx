@@ -7,9 +7,13 @@ const Container = styled.div`
   justify-content: space-between;
   width: 100%;
   padding: 4%;
-  height: 70vh;
+  height: 90vh;
   overflow: scroll;
   background-color: white;
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    height: 300px;
+  }
 `;
 
 export default function CategoryContainer() {

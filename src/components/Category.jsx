@@ -8,6 +8,11 @@ const Container = styled.div`
   position: relative;
   z-index: 1;
   background-color: white;
+  width: 100%;
+
+  @media only screen and (min-width: 768px) {
+    width: 32%;
+  }
 
   &:before {
     content: "";
@@ -22,7 +27,11 @@ const Container = styled.div`
 `;
 
 const CategoryImage = styled.img`
-  width: 120px;
+  width: 30%;
+  max-width: 150px;
+  @media only screen and (min-width: 768px) {
+    width: 70%;
+  }
 `;
 
 const ShopButton = styled.button`
@@ -38,6 +47,7 @@ const ShopText = styled.span`
   letter-spacing: 1px;
   margin-right: 0.5rem;
   opacity: 0.5;
+  height: 30%;
 
   &:hover {
     color: var(--sienna);

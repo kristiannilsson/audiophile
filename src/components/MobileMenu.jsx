@@ -1,7 +1,6 @@
 import CategoryContainer from "./CategoryContainer";
 import styled, { keyframes } from "styled-components";
 import { slideInDown, slideOutUp, fadeOut, fadeIn } from "react-animations";
-import { render } from "@testing-library/react";
 
 const slideInAnimation = keyframes`${slideInDown}`;
 const slideOutAnimation = keyframes`${slideOutUp}`;
@@ -25,7 +24,7 @@ const Overlay = styled.div`
     ${(props) => (props.open ? fadeInAnimation : fadeOutAnimation)} forwards;
 `;
 
-function MobileMenu(props) {
+export default function MobileMenu(props) {
   if (props.open) {
     document.body.style.overflow = "hidden";
   } else {
@@ -41,5 +40,3 @@ function MobileMenu(props) {
     </>
   );
 }
-
-export default MobileMenu;
