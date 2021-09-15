@@ -3,11 +3,13 @@ import Description from "../../components/Description";
 import Navbar from "../../components/Navbar";
 import BoxContents from "./BoxContents";
 import Features from "./Features";
+import ImageGallery from "./ImageGallery";
 
 const Container = styled.div`
   padding: 4%;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 
   @media only screen and (min-width: 768px) {
   }
@@ -31,6 +33,11 @@ export default function ProductDetail(props) {
         />
         <Features text={props.data.features} />
         <BoxContents contents={props.data.includes} />
+        <ImageGallery
+          first={props.data.gallery.first}
+          second={props.data.gallery.second}
+          third={props.data.gallery.third}
+        />
       </Container>
     </>
   );

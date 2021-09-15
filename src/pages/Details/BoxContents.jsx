@@ -7,7 +7,7 @@ const ListCount = styled.span`
 `;
 
 const Container = styled.div`
-  margin-top: 6rem;
+  margin: 6rem 0;
   width: 100%;
   @media only screen and (min-width: 768px) and (max-width: 1439px) {
     display: flex;
