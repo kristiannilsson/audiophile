@@ -6,13 +6,11 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  padding: 4%;
-  height: 90vh;
-  overflow: scroll;
+  height: 100%;
   background-color: white;
   @media only screen and (min-width: 768px) {
     flex-direction: row;
-    height: 300px;
+    margin-top: 70px;
   }
 `;
 

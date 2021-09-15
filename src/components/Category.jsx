@@ -9,6 +9,7 @@ const Container = styled.div`
   z-index: 1;
   background-color: white;
   width: 100%;
+  margin-bottom: 20px;
 
   @media only screen and (min-width: 768px) {
     width: 32%;
@@ -31,13 +32,14 @@ const CategoryImage = styled.img`
   max-width: 150px;
   @media only screen and (min-width: 768px) {
     width: 70%;
+    max-width: 220px;
   }
 `;
 
 const ShopButton = styled.button`
   align-items: center;
   display: flex;
-  margin-bottom: 1rem;
+  height: 60px;
 `;
 
 const ShopText = styled.span`

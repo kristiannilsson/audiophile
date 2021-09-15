@@ -9,10 +9,17 @@ const fadeOutAnimation = keyframes`${fadeOut}`;
 
 const Container = styled.div`
   width: 100%;
+  height: 90vh;
+  padding: 4%;
   position: absolute;
+  overflow: scroll;
+  background-color: var(--white);
   z-index: 1;
   animation: 0.7s
     ${(props) => (props.open ? slideInAnimation : slideOutAnimation)} forwards;
+  @media only screen and (min-width: 768px) {
+    height: unset;
+  }
 `;
 
 const Overlay = styled.div`
