@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { useState } from "react";
 import MobileMenu from "./MobileMenu";
 
@@ -32,17 +32,15 @@ const Hamburger = styled.svg`
   }
 `;
 
-const Overlay = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
-  height: 20vh;
-  width: 100%;
-`;
-
 const Links = styled.ul`
   color: var(--white);
   display: flex;
-  width: 500px;
+  width: 100%;
+
   justify-content: space-around;
+  @media only screen and (min-width: 768px) {
+    width: 500px;
+  }
   @media only screen and (max-width: 1440px) {
     display: none;
   }
