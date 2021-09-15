@@ -9,12 +9,13 @@ const CounterContainer = styled.div`
   height: 48px;
   justify-content: space-around;
   letter-spacing: 1px;
+  margin-right: 1rem;
   width: 120px;
 `;
 
 const Button = styled.button`
-  opacity: 0.25;
   font-size: 13px;
+  opacity: 0.25;
 `;
 
 const CounterText = styled.p`

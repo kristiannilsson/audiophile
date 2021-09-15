@@ -6,10 +6,10 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="sc-bdfBQB cUoFsx"
+        class="sc-bdfBQB iOZDi"
       >
         <button
-          class="sc-gsTEea ehKaTH"
+          class="sc-gsTEea jxePWv"
         >
           -
         </button>
@@ -19,7 +19,7 @@ Object {
           0
         </p>
         <button
-          class="sc-gsTEea ehKaTH"
+          class="sc-gsTEea jxePWv"
         >
           +
         </button>
@@ -28,10 +28,10 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-bdfBQB cUoFsx"
+      class="sc-bdfBQB iOZDi"
     >
       <button
-        class="sc-gsTEea ehKaTH"
+        class="sc-gsTEea jxePWv"
       >
         -
       </button>
@@ -41,7 +41,7 @@ Object {
         0
       </p>
       <button
-        class="sc-gsTEea ehKaTH"
+        class="sc-gsTEea jxePWv"
       >
         +
       </button>

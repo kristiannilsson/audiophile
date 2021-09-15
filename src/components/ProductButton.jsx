@@ -8,7 +8,6 @@ const Button = styled.button`
   color: ${(props) => (props.alternative ? "var(--black)" : "var(--white)")};
   display: inline-block;
   height: 48px;
-  margin-left: 1.1rem;
   text-align: center;
   width: 160px;
 
@@ -20,7 +19,7 @@ const Button = styled.button`
 `;
 
 export default function ProductButton(props) {
-  return <Button alternative={props.alternative}>SEE PRODUCT</Button>;
+  return <Button alternative={props.alternative}>{props.text}</Button>;
 }
 
 ProductButton.defaultProps = {

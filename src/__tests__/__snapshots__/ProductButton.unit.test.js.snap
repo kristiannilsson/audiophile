@@ -6,18 +6,14 @@ Object {
   "baseElement": <body>
     <div>
       <button
-        class="sc-bdfBQB htXrCQ"
-      >
-        SEE PRODUCT
-      </button>
+        class="sc-bdfBQB fHMzJf"
+      />
     </div>
   </body>,
   "container": <div>
     <button
-      class="sc-bdfBQB htXrCQ"
-    >
-      SEE PRODUCT
-    </button>
+      class="sc-bdfBQB fHMzJf"
+    />
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
