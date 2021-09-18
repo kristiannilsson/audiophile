@@ -1,12 +1,14 @@
 import styled from "styled-components";
-import CategoryContainer from "../components/common/CategoryContainer";
-import Description from "../components/common/Description";
-import Navbar from "../components/common/Navbar";
-import BoxContents from "../components/details/BoxContents";
-import Features from "../components/details/Features";
-import ImageGallery from "../components/details/ImageGallery";
-import OtherProducts from "../components/details/OtherProducts";
-import json from "../data/data.json";
+import CategoryContainer from "../../components/common/CategoryContainer";
+import Description from "../../components/common/Description";
+import Navbar from "../../components/common/Navbar";
+import BoxContents from "../../components/details/BoxContents";
+import Features from "../../components/details/Features";
+import ImageGallery from "../../components/details/ImageGallery";
+import OtherProducts from "../../components/details/OtherProducts";
+import json from "../../data/data.json";
+import { useRouter } from "next/router";
+import Head from "next/head";
 
 const Container = styled.div`
   padding: 4%;
@@ -23,8 +25,16 @@ const Container = styled.div`
 
 export default function ProductDetail(props) {
   const data = json[1];
+  const router = useRouter();
   return (
     <>
+      <Head>
+        <title>Audiophile</title>
+        <meta
+          name="description"
+          content="Detailed overview of Audiophile products"
+        />
+      </Head>
       <Navbar />
       <Container>
         <Description
