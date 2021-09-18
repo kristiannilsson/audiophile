@@ -26,6 +26,7 @@ const Paragraph = styled.p`
 
 const SubHeading = styled.h2`
   width: 50%;
+  margin-bottom: 2rem;
   @media only screen and (min-width: 1440px) {
     width: 100%;
   }
