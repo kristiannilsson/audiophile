@@ -67,7 +67,7 @@ export default function Category(props) {
   return (
     <Container>
       <CategoryImage
-        src={`./assets/shared/desktop/image-category-thumbnail-${props.category}.png`}
+        src={`/assets/shared/desktop/image-category-thumbnail-${props.category}.png`}
         alt=""
       />
       <CategoryText>{props.category}</CategoryText>
