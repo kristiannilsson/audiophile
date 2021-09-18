@@ -16,10 +16,18 @@ const Button = styled.button`
       props.alternative ? "var(--black)" : "var(--pink)"};
     color: "var(--white)";
   }
+
+  &:focus {
+    border: 1px solid black;
+  }
 `;
 
 export default function ProductButton(props) {
-  return <Button alternative={props.alternative}>{props.text}</Button>;
+  return (
+    <Button tabindex="0" alternative={props.alternative}>
+      {props.text}
+    </Button>
+  );
 }
 
 ProductButton.defaultProps = {

@@ -44,6 +44,19 @@ button {
   all: unset;
 }
 
+button:focus-visible {
+  border: none;
+  outline: 1px var(--onyx) outset;
+}
+
+a {
+  all: unset;
+}
+
+a:focus-visible {
+  border: 1px solid white;
+}
+
 ul {
   all: unset;
   list-style: none;

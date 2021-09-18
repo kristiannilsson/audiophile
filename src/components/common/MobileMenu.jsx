@@ -1,34 +1,70 @@
 import CategoryContainer from "./CategoryContainer";
-import styled, { keyframes } from "styled-components";
-import { slideInDown, slideOutUp, fadeOut, fadeIn } from "react-animations";
-
-const slideInAnimation = keyframes`${slideInDown}`;
-const slideOutAnimation = keyframes`${slideOutUp}`;
-const fadeInAnimation = keyframes`${fadeIn}`;
-const fadeOutAnimation = keyframes`${fadeOut}`;
+import styled from "styled-components";
 
 const Container = styled.div`
-  width: 100%;
+  animation: ${(props) => (props.open ? "slideIn" : "slideOut")} 0.7s forwards;
+  background-color: var(--white);
   height: 90vh;
+  overflow: auto;
   padding: 4%;
   position: absolute;
-  overflow: scroll;
-  background-color: var(--white);
-  z-index: 1;
-  animation: 0.7s
-    ${(props) => (props.open ? slideInAnimation : slideOutAnimation)} forwards;
+  width: 100%;
+  z-index: 2;
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(-100%);
+      visibility: hidden;
+    }
+    to {
+      transform: translateY(0);
+      visibility: visible;
+    }
+  }
+  @keyframes slideOut {
+    from {
+      transform: translateY(0);
+      visibility: hidden;
+    }
+    to {
+      transform: translateY(-100%);
+      visibility: visible;
+    }
+  }
+
   @media only screen and (min-width: 768px) {
     height: unset;
   }
 `;
 
 const Overlay = styled.div`
-  width: 100%;
-  height: 100vh;
+  animation: ${(props) => (props.open ? "fadeIn" : "fadeOut")} 0.7s forwards;
   background: rgba(0, 0, 0, 0.4);
+  height: 100vh;
   position: absolute;
-  animation: 0.7s
-    ${(props) => (props.open ? fadeInAnimation : fadeOutAnimation)} forwards;
+  width: 100%;
+  z-index: 1;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      visibility: hidden;
+    }
+    to {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      visibility: visible;
+    }
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
 `;
 
 export default function MobileMenu(props) {
