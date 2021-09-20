@@ -1,8 +1,9 @@
 import CategoryContainer from "./CategoryContainer";
 import styled from "styled-components";
+import { Transition } from "react-transition-group";
+import { useRef } from "react";
 
 const Container = styled.div`
-  animation: ${(props) => (props.open ? "slideIn" : "slideOut")} 0.7s forwards;
   background-color: var(--white);
   height: 90vh;
   overflow: auto;
@@ -10,70 +11,77 @@ const Container = styled.div`
   position: absolute;
   width: 100%;
   z-index: 2;
-
-  @keyframes slideIn {
-    from {
-      transform: translateY(-100%);
-      visibility: hidden;
+  transition: transform 0.5s;
+  transform: ${({ state }) => {
+    switch (state) {
+      case "entering":
+        return "translateY(-100%)";
+      case "entered":
+        return "translateY(0)";
+      case "exiting":
+        return "translateY(-100%)";
     }
-    to {
-      transform: translateY(0);
-      visibility: visible;
-    }
-  }
-  @keyframes slideOut {
-    from {
-      transform: translateY(0);
-      visibility: hidden;
-    }
-    to {
-      transform: translateY(-100%);
-      visibility: visible;
-    }
-  }
-
+  }};
   @media only screen and (min-width: 768px) {
     height: unset;
   }
 `;
 
 const Overlay = styled.div`
-  animation: ${(props) => (props.open ? "fadeIn" : "fadeOut")} 0.7s forwards;
   background: rgba(0, 0, 0, 0.4);
   height: 100vh;
   position: absolute;
   width: 100%;
   z-index: 1;
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      visibility: hidden;
+  transition: opacity 0.5s;
+  opacity: ${({ state }) => {
+    switch (state) {
+      case "entering":
+        return 0;
+      case "entered":
+        return "1";
+      case "exiting":
+        return "0";
     }
-    to {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-      visibility: visible;
-    }
-    to {
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
+  }};
 `;
 
 export default function MobileMenu(props) {
+  const nodeRef = useRef();
+
+  if (props.open && typeof window === "object") {
+    document.querySelector("body").style.overflow = "hidden";
+  } else if (typeof window === "object") {
+    document.querySelector("body").style.overflow = "visible";
+  }
   return (
     <>
-      <Container open={props.open}>
-        <CategoryContainer></CategoryContainer>
-      </Container>
-      <Overlay open={props.open}></Overlay>
+      <Transition
+        nodeRef={nodeRef}
+        in={props.open}
+        mountOnEnter={true}
+        unmountOnExit={true}
+        timeout={{
+          exit: 500,
+        }}
+      >
+        {(state) => (
+          <Container ref={nodeRef} state={state}>
+            <CategoryContainer></CategoryContainer>
+          </Container>
+        )}
+      </Transition>
+      <Transition
+        nodeRef={nodeRef}
+        in={props.open}
+        mountOnEnter={true}
+        unmountOnExit={true}
+        timeout={{
+          exit: 2000,
+        }}
+      >
+        {(state) => <Overlay ref={nodeRef} state={state}></Overlay>}
+      </Transition>
     </>
   );
 }

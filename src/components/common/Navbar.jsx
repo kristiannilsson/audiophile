@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MobileMenu from "./MobileMenu";
 
 const Nav = styled.nav`
@@ -7,11 +7,11 @@ const Nav = styled.nav`
   background-color: var(--black);
   display: flex;
   height: 10vh;
-  max-height: 90px;
   justify-content: space-between;
+  max-height: 90px;
   padding: 0 4%;
-  width: 100%;
   position: relative;
+  width: 100%;
   z-index: 3;
 
   @media only screen and (min-width: 1440px) {
@@ -62,6 +62,16 @@ export const Links = styled.ul`
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    function handleResize(e) {
+      if (menuOpen && e.target.innerWidth > 1440) {
+        setMenuOpen(false);
+      }
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  });
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
