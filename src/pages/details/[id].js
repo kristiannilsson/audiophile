@@ -9,6 +9,8 @@ import OtherProducts from "../../components/details/OtherProducts";
 import json from "../../data/data.json";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import Presentation from "../../components/common/Presentation";
+import Footer from "../../components/common/Footer";
 
 const Container = styled.div`
   padding: 4%;
@@ -54,7 +56,9 @@ export default function ProductDetail(props) {
         />
         <OtherProducts products={data.others} />
         <CategoryContainer />
+        <Presentation />
       </Container>
+      <Footer />
     </>
   );
 }

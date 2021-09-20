@@ -13,6 +13,10 @@ const Nav = styled.nav`
   width: 100%;
   position: relative;
   z-index: 3;
+
+  @media only screen and (min-width: 1440px) {
+    padding: 0 11%;
+  }
 `;
 
 const Cart = styled.svg`
@@ -40,7 +44,7 @@ const MenuIcon = styled.img`
   border-radius: 0;
 `;
 
-const Links = styled.ul`
+export const Links = styled.ul`
   color: var(--white);
   display: flex;
   width: 100%;
