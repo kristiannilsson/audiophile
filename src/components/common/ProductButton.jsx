@@ -7,6 +7,8 @@ const Button = styled.button`
   box-sizing: "border-box";
   color: ${(props) => (props.alternative ? "var(--black)" : "var(--white)")};
   display: inline-block;
+  font-weight: 700;
+  font-size: 13px;
   height: 48px;
   text-align: center;
   width: 160px;
