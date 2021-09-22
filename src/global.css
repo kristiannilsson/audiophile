@@ -51,6 +51,7 @@ button:focus-visible {
 
 a {
   all: unset;
+  cursor: pointer;
 }
 
 a:focus-visible {

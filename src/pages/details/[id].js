@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Presentation from "../../components/common/Presentation";
 import Footer from "../../components/common/Footer";
+import { useEffect, useState } from "react";
 
 const Container = styled.div`
   padding: 4%;
@@ -26,8 +27,17 @@ const Container = styled.div`
 `;
 
 export default function ProductDetail(props) {
-  const data = json[1];
   const router = useRouter();
+  const [id, setId] = useState();
+  useEffect(() => {
+    if (!router.isReady) return null;
+    const newId = parseInt(router.query.id);
+    if (newId < json.length && newId >= 0 && !typeof NaN) {
+      setId(router.query.id);
+    } else {
+      setId(1);
+    }
+  }, [router.isReady]);
   return (
     <>
       <Head>
@@ -38,26 +48,28 @@ export default function ProductDetail(props) {
         />
       </Head>
       <Navbar />
-      <Container>
-        <Description
-          img={data.image}
-          new={data.new}
-          name={data.name}
-          description={data.description}
-          price={data.price}
-          detailed={true}
-        />
-        <Features text={data.features} />
-        <BoxContents contents={data.includes} />
-        <ImageGallery
-          first={data.gallery.first}
-          second={data.gallery.second}
-          third={data.gallery.third}
-        />
-        <OtherProducts products={data.others} />
-        <CategoryContainer />
-        <Presentation />
-      </Container>
+      {id && (
+        <Container>
+          <Description
+            img={json[id].image}
+            new={json[id].new}
+            name={json[id].name}
+            description={json[id].description}
+            price={json[id].price}
+            detailed={true}
+          />
+          <Features text={json[id].features} />
+          <BoxContents contents={json[id].includes} />
+          <ImageGallery
+            first={json[id].gallery.first}
+            second={json[id].gallery.second}
+            third={json[id].gallery.third}
+          />
+          <OtherProducts products={json[id].others} />
+          <CategoryContainer />
+          <Presentation />
+        </Container>
+      )}
       <Footer />
     </>
   );
